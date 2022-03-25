@@ -9,6 +9,8 @@
 //Main View Controller
 "mainView_title" = "Posts";
 "mainView_deleteAll" = "Delete All";
+"mainView_segment1" = "All";
+"mainView_segment2" = "Favorites";
 
 //Detail View Controller
 "detailView_title" = "Post";

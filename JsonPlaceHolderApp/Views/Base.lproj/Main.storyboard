@@ -36,17 +36,60 @@
                                     <fontDescription key="titleFontDescription" name="Helvetica" family="Helvetica" pointSize="16"/>
                                     <color key="baseBackgroundColor" systemColor="systemRedColor"/>
                                 </buttonConfiguration>
-                                <connections>
-                                    <segue destination="IHf-LJ-rsF" kind="show" id="FIa-bW-WFk"/>
-                                </connections>
                             </button>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="FSs-TQ-I3S">
+                                <rect key="frame" x="10" y="129" width="394" height="678"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="PostCellView" id="d8l-X0-aiD" customClass="PostCell" customModule="JsonPlaceHolderApp" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="44.5" width="394" height="10"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="d8l-X0-aiD" id="a67-iG-zxk">
+                                            <rect key="frame" x="0.0" y="0.0" width="364.5" height="10"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="4ex-V1-Bxu">
+                                                    <rect key="frame" x="10" y="-8" width="25" height="25"/>
+                                                    <color key="tintColor" systemColor="systemYellowColor"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="25" id="Jqp-jA-gn4"/>
+                                                        <constraint firstAttribute="height" constant="25" id="Mh4-3d-LY6"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cKO-RA-HJ6">
+                                                    <rect key="frame" x="45" y="5" width="309.5" height="0.0"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="cKO-RA-HJ6" secondAttribute="bottom" constant="5" id="INF-ha-j7V"/>
+                                                <constraint firstItem="4ex-V1-Bxu" firstAttribute="centerY" secondItem="a67-iG-zxk" secondAttribute="centerY" id="gNL-Gq-3Xt"/>
+                                                <constraint firstItem="cKO-RA-HJ6" firstAttribute="top" secondItem="a67-iG-zxk" secondAttribute="top" constant="5" id="hf9-YZ-x6y"/>
+                                                <constraint firstItem="4ex-V1-Bxu" firstAttribute="leading" secondItem="a67-iG-zxk" secondAttribute="leading" constant="10" id="l9e-uN-CuS"/>
+                                                <constraint firstAttribute="trailing" secondItem="cKO-RA-HJ6" secondAttribute="trailing" constant="10" id="rrQ-co-5Dg"/>
+                                                <constraint firstItem="cKO-RA-HJ6" firstAttribute="leading" secondItem="4ex-V1-Bxu" secondAttribute="trailing" constant="10" id="tV1-Lj-5h7"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="favoriteImage" destination="4ex-V1-Bxu" id="cQw-MN-IaJ"/>
+                                            <outlet property="titleText" destination="cKO-RA-HJ6" id="bka-1Z-cCZ"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="cey-hR-q9p" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="15" id="1yz-yA-1fr"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="FSs-TQ-I3S" secondAttribute="trailing" constant="10" id="86D-sa-XAr"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="88d-pB-lp8" secondAttribute="trailing" id="HDC-fj-m0A"/>
+                            <constraint firstItem="FSs-TQ-I3S" firstAttribute="top" secondItem="cey-hR-q9p" secondAttribute="bottom" constant="5" id="IrR-Rp-xKk"/>
                             <constraint firstItem="88d-pB-lp8" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="KlK-pG-8iU"/>
+                            <constraint firstItem="88d-pB-lp8" firstAttribute="top" secondItem="FSs-TQ-I3S" secondAttribute="bottom" constant="5" id="RH2-mE-q7e"/>
+                            <constraint firstItem="FSs-TQ-I3S" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="10" id="TEi-1e-L1s"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="88d-pB-lp8" secondAttribute="bottom" id="W4y-m8-rED"/>
                             <constraint firstItem="cey-hR-q9p" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="5" id="Xh1-pG-j0h"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="cey-hR-q9p" secondAttribute="trailing" constant="15" id="cQN-Xt-yOi"/>
@@ -58,6 +101,8 @@
                     <connections>
                         <outlet property="deleteAllButon" destination="88d-pB-lp8" id="XtV-ED-nDg"/>
                         <outlet property="listSegmented" destination="cey-hR-q9p" id="H8f-eQ-xjp"/>
+                        <outlet property="tableView" destination="FSs-TQ-I3S" id="sFK-Ss-8kf"/>
+                        <segue destination="IHf-LJ-rsF" kind="show" identifier="toDetail" id="4EJ-fY-MSd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -76,8 +121,8 @@
                     </view>
                     <navigationItem key="navigationItem" largeTitleDisplayMode="always" id="w0P-dY-NIv">
                         <barButtonItem key="backBarButtonItem" title=" " id="Pa6-Aw-roH"/>
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="Uj5-qG-1Ud">
-                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <barButtonItem key="rightBarButtonItem" title="Item" image="star" catalog="system" id="Uj5-qG-1Ud">
+                            <color key="tintColor" systemColor="systemYellowColor"/>
                         </barButtonItem>
                     </navigationItem>
                 </viewController>
@@ -125,6 +170,8 @@
     </scenes>
     <color key="tintColor" systemColor="tintColor"/>
     <resources>
+        <image name="star" catalog="system" width="128" height="116"/>
+        <image name="star.fill" catalog="system" width="128" height="116"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
@@ -133,6 +180,9 @@
         </systemColor>
         <systemColor name="systemTealColor">
             <color red="0.18823529411764706" green="0.69019607843137254" blue="0.7803921568627451" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemYellowColor">
+            <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="tintColor">
             <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
