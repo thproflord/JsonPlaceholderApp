@@ -18,6 +18,7 @@
 		39CDB9B827ED47AF009326C9 /* JsonPlaceHolderAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39CDB9B727ED47AF009326C9 /* JsonPlaceHolderAppUITests.swift */; };
 		39CDB9BA27ED47AF009326C9 /* JsonPlaceHolderAppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39CDB9B927ED47AF009326C9 /* JsonPlaceHolderAppUITestsLaunchTests.swift */; };
 		39CDB9CC27ED4C51009326C9 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 39CDB9CE27ED4C51009326C9 /* Localizable.strings */; };
+		39CDB9D127ED65A9009326C9 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39CDB9D027ED65A9009326C9 /* DetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +55,7 @@
 		39CDB9B927ED47AF009326C9 /* JsonPlaceHolderAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonPlaceHolderAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		39CDB9CD27ED4C51009326C9 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		39CDB9CF27ED4C77009326C9 /* es-419 */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "es-419"; path = "es-419.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		39CDB9D027ED65A9009326C9 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -147,6 +149,7 @@
 			isa = PBXGroup;
 			children = (
 				39CDB99727ED47AD009326C9 /* MainViewController.swift */,
+				39CDB9D027ED65A9009326C9 /* DetailViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -293,6 +296,7 @@
 			files = (
 				39CDB99827ED47AD009326C9 /* MainViewController.swift in Sources */,
 				39CDB99E27ED47AD009326C9 /* JsonPlaceHolderApp.xcdatamodeld in Sources */,
+				39CDB9D127ED65A9009326C9 /* DetailViewController.swift in Sources */,
 				39CDB99427ED47AD009326C9 /* AppDelegate.swift in Sources */,
 				39CDB99627ED47AD009326C9 /* SceneDelegate.swift in Sources */,
 			);

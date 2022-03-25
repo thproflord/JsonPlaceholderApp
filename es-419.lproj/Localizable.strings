@@ -9,3 +9,7 @@
 
 // Main View Controller
 "mainView_title" = "Posts";
+"mainView_deleteAll" = "Borrar Todos";
+
+//Detail View Controller
+"detailView_title" = "Post";
