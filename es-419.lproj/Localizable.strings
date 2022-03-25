@@ -1,0 +1,11 @@
+/* 
+  Localizable.strings
+  JsonPlaceHolderApp
+
+  Created by Fernando Gomes on 24/03/2022.
+  
+*/
+
+
+// Main View Controller
+"mainView_title" = "Posts";
