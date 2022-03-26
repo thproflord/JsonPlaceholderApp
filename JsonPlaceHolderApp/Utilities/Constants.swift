@@ -9,15 +9,20 @@ import Foundation
 
 struct Constants {
     
+    static let detailView_staticCells = 2
+    
     //MARK: - Services URLs
     
     static let baseUrl = "https://jsonplaceholder.typicode.com/"
     static let postsUrl = "posts"
-    static let usersUrl = "users"
-    static let commentsOnPostUrl = "/comments?postId="
+    static let usersUrl = "users/"
+    static let commentsOnPostUrl = "comments?postId="
     
     //MARK: - Cells Identifier
     static let postCell = "PostCellView"
+    static let descriptionCell = "descriptionCell"
+    static let userCell = "userCell"
+    static let commentsCell = "commentsCell"
     
     //MARK: - Segue Identifier
     
@@ -46,6 +51,15 @@ struct Constants {
     
     //Description Cell
     static let descriptionCell_title = "description_title";
+    
+    //User Cell
+    static let user_title = "user_title"
+    static let name_label = "name_label"
+    static let phone_label = "phone_label"
+    static let email_label = "email_label"
+    static let web_label = "web_label"
+    static let comments_title = "commets_title"
+
 
     
 }

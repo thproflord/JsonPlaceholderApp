@@ -28,3 +28,12 @@
 
 //Description Cell
 "description_title" = "Descripción";
+
+//User Cell
+"user_title" = "Usuario";
+"name_label" = "Nombre";
+"phone_label" = "Numero";
+"email_label" = "Correo";
+"web_label" = "Web";
+"commets_title" = "Comentarios";
+

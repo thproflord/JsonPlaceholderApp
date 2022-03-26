@@ -17,6 +17,7 @@ class MainViewController: UIViewController {
     
     // MARK: - Properties
     var postArray : [PostDto] = []
+    var favoritePostArray : [PostDto] = []
     var index = 0
     
     // MARK: - View Life Cycle
@@ -30,6 +31,7 @@ class MainViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        favoritePostArray = self.postArray.filter{ $0.favorite }
         self.tableView.reloadData()
     }
     
@@ -41,12 +43,12 @@ class MainViewController: UIViewController {
         tableView.dataSource = self
         
         let refreshControl = UIRefreshControl()
-        refreshControl.addTarget(self, action: #selector(doSomething), for: .valueChanged)
+        refreshControl.addTarget(self, action: #selector(refreshTable), for: .valueChanged)
         tableView.refreshControl = refreshControl
 
     }
     
-    @objc func doSomething(refreshControl: UIRefreshControl) {
+    @objc func refreshTable(refreshControl: UIRefreshControl) {
         fetchPost()
         refreshControl.endRefreshing()
     }
@@ -68,12 +70,23 @@ class MainViewController: UIViewController {
         }
     }
     
+    @objc func indexChanged(_ sender: UISegmentedControl) {
+        favoritePostArray = self.postArray.filter{ $0.favorite }
+        if(listSegmented.selectedSegmentIndex == 1) {
+            deleteAllButon.isHidden = true
+        }else {
+            deleteAllButon.isHidden = false
+        }
+        self.tableView.reloadData()
+    }
+    
     private func setViews() {
         listSegmented.layer.backgroundColor = UIColor.white.cgColor
         listSegmented.layer.borderWidth = 2
         listSegmented.layer.borderColor = UIColor.systemTeal.cgColor
         listSegmented.setTitleTextAttributes([.foregroundColor: UIColor.systemTeal], for: .normal)
         listSegmented.setTitleTextAttributes([.foregroundColor: UIColor.white], for: .selected)
+        listSegmented.addTarget(self, action: #selector(indexChanged(_:)), for: .valueChanged)
     }
     
     private func setTranslations(){
@@ -85,10 +98,10 @@ class MainViewController: UIViewController {
     }
     
     func showAlertWithDistructiveButton() {
-        let alert = UIAlertController(title: Constants.deleteAll_title, message: Constants.deleteAll_description, preferredStyle: .alert)
+        let alert = UIAlertController(title: NSLocalizedString(Constants.deleteAll_title, comment: "Text for Delete Alert Title"), message: NSLocalizedString(Constants.deleteAll_description, comment: "Text for Delete Alert Description"), preferredStyle: .alert)
 
-        alert.addAction(UIAlertAction(title: Constants.deleteAll_cancel, style: .default))
-        alert.addAction(UIAlertAction(title: Constants.deleteAll_delete,
+        alert.addAction(UIAlertAction(title: NSLocalizedString(Constants.deleteAll_cancel, comment: "Text for Delete Alert Cancel Button"), style: .default))
+        alert.addAction(UIAlertAction(title: NSLocalizedString(Constants.deleteAll_delete, comment: "Text for Delete Alert Delete Button"),
                                           style: .destructive) { _ in
                 self.deletePosts()
             })
@@ -129,14 +142,18 @@ class MainViewController: UIViewController {
 extension MainViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return postArray.count
+        return (self.listSegmented.selectedSegmentIndex == 0 ? postArray.count : favoritePostArray.count)
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: Constants.postCell, for: indexPath) as! PostCell
-        cell.delegate = self
-        cell.setCell(post: self.postArray[indexPath.row])
+        if(listSegmented.selectedSegmentIndex == 0 ){
+            cell.delegate = self
+        }else {
+            cell.delegate = nil
+        }
+        cell.setCell(post: (self.listSegmented.selectedSegmentIndex == 0 ? self.postArray[indexPath.row] : favoritePostArray[indexPath.row]))
         return cell
     }
     
@@ -152,7 +169,7 @@ extension MainViewController : SwipeTableViewCellDelegate {
     
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> [SwipeAction]? {
         guard orientation == .right else { return nil }
-        let deleteAction = SwipeAction(style: .destructive, title: Constants.deleteAll_delete) { action, indexPath in
+        let deleteAction = SwipeAction(style: .destructive, title: NSLocalizedString(Constants.deleteAll_delete, comment: "Text for Delete Single Post")) { action, indexPath in
             self.postArray.remove(at: indexPath.row)
         }
         return [deleteAction]
