@@ -8,6 +8,7 @@ target 'JsonPlaceHolderApp' do
   # Pods for JsonPlaceHolderApp
 
   pod 'Alamofire', '~> 5.2'
+  pod 'SwipeCellKit'
 
   target 'JsonPlaceHolderAppTests' do
     inherit! :search_paths

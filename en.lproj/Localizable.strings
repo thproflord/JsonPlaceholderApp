@@ -14,3 +14,17 @@
 
 //Detail View Controller
 "detailView_title" = "Post";
+
+//No Internet Alert
+"noInternet_title" = " No Internet";
+"noInternet_description" = "You have not a connection to Internet. Try it later";
+
+// Delete All Alert
+"deleteAll_title" = "Delete All";
+"deleteAll_description" = "You are going to delete all Posts.";
+"deleteAll_cancel" = "Cancel";
+"deleteAll_delete" = "Delete";
+
+//Description Cell
+"description_title" = "Description";
+

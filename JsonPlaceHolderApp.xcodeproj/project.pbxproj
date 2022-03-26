@@ -19,6 +19,12 @@
 		39CDB9BA27ED47AF009326C9 /* JsonPlaceHolderAppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39CDB9B927ED47AF009326C9 /* JsonPlaceHolderAppUITestsLaunchTests.swift */; };
 		39CDB9CC27ED4C51009326C9 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 39CDB9CE27ED4C51009326C9 /* Localizable.strings */; };
 		39CDB9D127ED65A9009326C9 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39CDB9D027ED65A9009326C9 /* DetailViewController.swift */; };
+		39CDB9D427EE3264009326C9 /* MainViewService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39CDB9D327EE3264009326C9 /* MainViewService.swift */; };
+		39CDB9D727EE32AD009326C9 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39CDB9D627EE32AD009326C9 /* Constants.swift */; };
+		39CDB9DA27EE3933009326C9 /* PostDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39CDB9D927EE3933009326C9 /* PostDto.swift */; };
+		39CDB9DC27EE51E4009326C9 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39CDB9DB27EE51E4009326C9 /* Reachability.swift */; };
+		39CDB9DF27EE5DE4009326C9 /* UIViewController+SpinnerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39CDB9DE27EE5DE4009326C9 /* UIViewController+SpinnerView.swift */; };
+		39CDB9E127EE5E2B009326C9 /* SpinnerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39CDB9E027EE5E2B009326C9 /* SpinnerViewController.swift */; };
 		4B7A185EAA9D3DD9B4BA02B2 /* Pods_JsonPlaceHolderApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 434658E6F7CBBF36225C2577 /* Pods_JsonPlaceHolderApp.framework */; };
 		7319CC527750642A94FA52A2 /* Pods_JsonPlaceHolderAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 494AD11360B90BAA9537A1EE /* Pods_JsonPlaceHolderAppTests.framework */; };
 		7EBEB46766FDC3BE78887F0E /* Pods_JsonPlaceHolderApp_JsonPlaceHolderAppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30BD608581445CD162AF74CC /* Pods_JsonPlaceHolderApp_JsonPlaceHolderAppUITests.framework */; };
@@ -62,6 +68,12 @@
 		39CDB9CD27ED4C51009326C9 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		39CDB9CF27ED4C77009326C9 /* es-419 */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "es-419"; path = "es-419.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		39CDB9D027ED65A9009326C9 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		39CDB9D327EE3264009326C9 /* MainViewService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewService.swift; sourceTree = "<group>"; };
+		39CDB9D627EE32AD009326C9 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		39CDB9D927EE3933009326C9 /* PostDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDto.swift; sourceTree = "<group>"; };
+		39CDB9DB27EE51E4009326C9 /* Reachability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
+		39CDB9DE27EE5DE4009326C9 /* UIViewController+SpinnerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+SpinnerView.swift"; sourceTree = "<group>"; };
+		39CDB9E027EE5E2B009326C9 /* SpinnerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpinnerViewController.swift; sourceTree = "<group>"; };
 		434658E6F7CBBF36225C2577 /* Pods_JsonPlaceHolderApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JsonPlaceHolderApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		494AD11360B90BAA9537A1EE /* Pods_JsonPlaceHolderAppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JsonPlaceHolderAppTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9B774A37A537E7DA363630E3 /* Pods-JsonPlaceHolderAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JsonPlaceHolderAppTests.debug.xcconfig"; path = "Target Support Files/Pods-JsonPlaceHolderAppTests/Pods-JsonPlaceHolderAppTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -134,6 +146,9 @@
 		39CDB99227ED47AD009326C9 /* JsonPlaceHolderApp */ = {
 			isa = PBXGroup;
 			children = (
+				39CDB9D827EE3928009326C9 /* DTO */,
+				39CDB9D527EE329D009326C9 /* Utilities */,
+				39CDB9D227EE321D009326C9 /* Services */,
 				39CDB9C827ED47D2009326C9 /* Model */,
 				39CDB9C727ED47CE009326C9 /* Controller */,
 				39CDB9C627ED47C4009326C9 /* Views */,
@@ -188,6 +203,41 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		39CDB9D227EE321D009326C9 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				39CDB9D327EE3264009326C9 /* MainViewService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		39CDB9D527EE329D009326C9 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				39CDB9DD27EE5DD1009326C9 /* Extension */,
+				39CDB9D627EE32AD009326C9 /* Constants.swift */,
+				39CDB9DB27EE51E4009326C9 /* Reachability.swift */,
+				39CDB9E027EE5E2B009326C9 /* SpinnerViewController.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		39CDB9D827EE3928009326C9 /* DTO */ = {
+			isa = PBXGroup;
+			children = (
+				39CDB9D927EE3933009326C9 /* PostDto.swift */,
+			);
+			path = DTO;
+			sourceTree = "<group>";
+		};
+		39CDB9DD27EE5DD1009326C9 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				39CDB9DE27EE5DE4009326C9 /* UIViewController+SpinnerView.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
 		ADA45B6F4AC988A7A6B1B2EC /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -198,7 +248,6 @@
 				9B774A37A537E7DA363630E3 /* Pods-JsonPlaceHolderAppTests.debug.xcconfig */,
 				B4CDBEE5AC5B2A1B95F4E7D9 /* Pods-JsonPlaceHolderAppTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -443,9 +492,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				39CDB9E127EE5E2B009326C9 /* SpinnerViewController.swift in Sources */,
 				39CDB99827ED47AD009326C9 /* MainViewController.swift in Sources */,
 				39CDB99E27ED47AD009326C9 /* JsonPlaceHolderApp.xcdatamodeld in Sources */,
 				39CDB9D127ED65A9009326C9 /* DetailViewController.swift in Sources */,
+				39CDB9D427EE3264009326C9 /* MainViewService.swift in Sources */,
+				39CDB9D727EE32AD009326C9 /* Constants.swift in Sources */,
+				39CDB9DF27EE5DE4009326C9 /* UIViewController+SpinnerView.swift in Sources */,
+				39CDB9DC27EE51E4009326C9 /* Reachability.swift in Sources */,
+				39CDB9DA27EE3933009326C9 /* PostDto.swift in Sources */,
 				39CDB99427ED47AD009326C9 /* AppDelegate.swift in Sources */,
 				39CDB99627ED47AD009326C9 /* SceneDelegate.swift in Sources */,
 			);
