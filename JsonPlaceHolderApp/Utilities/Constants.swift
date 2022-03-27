@@ -60,6 +60,18 @@ struct Constants {
     static let web_label = "web_label"
     static let comments_title = "commets_title"
 
-
+    //MARK: - CoreData
+    
+    static let postEntity = "Post"
+    static let idAttribute = "id"
+    static let titleAttribute = "title"
+    static let bodyAttribute = "body"
+    static let userIdAttribute = "userId"
+    static let favoriteAttribute = "favorite"
+    
+    //MARK: - Images
+    static let star = "star"
+    static let star_fill = "star.fill"
+    
     
 }

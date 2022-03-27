@@ -7,7 +7,11 @@
 
 import UIKit
 import SwipeCellKit
+import CoreData
+
 class MainViewController: UIViewController {
+    
+    
     
     // MARK: - IBOutlets
     @IBOutlet weak var deleteAllButon: UIButton!
@@ -16,9 +20,16 @@ class MainViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
     // MARK: - Properties
-    var postArray : [PostDto] = []
-    var favoritePostArray : [PostDto] = []
+    var postDtoList : [PostDto] = [] {
+        didSet {
+            self.postCommand.addPostsToCoreData(newPosts: self.postDtoList)
+        }
+    }
+    var postArray : [Post] = []
+    var favoritePostArray : [Post] = []
     var index = 0
+    let postCommand = PostCommand()
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
     // MARK: - View Life Cycle
     override func viewDidLoad() {
@@ -27,7 +38,6 @@ class MainViewController: UIViewController {
         setViews()
         setupTableView()
         loadItems()
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -51,19 +61,21 @@ class MainViewController: UIViewController {
     @objc func refreshTable(refreshControl: UIRefreshControl) {
         fetchPost()
         refreshControl.endRefreshing()
+        
     }
     
     private func fetchPost(){
         if(Reachability.isConnectedToNetwork()){
+            postCommand.deleteAllPost()
             let group = DispatchGroup()
             group.enter()
             DispatchQueue.global().async {
-                self.postArray = MainViewService.getPostList()
+                self.postDtoList = MainViewService.getPostList()
                 group.leave()
             }
             group.notify(queue: .main){
+                self.postArray = self.postCommand.getAllPosts()
                 self.tableView.reloadData()
-               
             }
         } else {
             Reachability.dispatchAlert(self)
@@ -101,28 +113,31 @@ class MainViewController: UIViewController {
         let alert = UIAlertController(title: NSLocalizedString(Constants.deleteAll_title, comment: "Text for Delete Alert Title"), message: NSLocalizedString(Constants.deleteAll_description, comment: "Text for Delete Alert Description"), preferredStyle: .alert)
 
         alert.addAction(UIAlertAction(title: NSLocalizedString(Constants.deleteAll_cancel, comment: "Text for Delete Alert Cancel Button"), style: .default))
-        alert.addAction(UIAlertAction(title: NSLocalizedString(Constants.deleteAll_delete, comment: "Text for Delete Alert Delete Button"),
-                                          style: .destructive) { _ in
-                self.deletePosts()
-            })
-            self.present(alert, animated: true, completion: nil)
-        }
+        alert.addAction(UIAlertAction(title: NSLocalizedString(Constants.deleteAll_delete, comment: "Text for Delete Alert Delete Button"), style: .destructive) { _ in
+            self.deletePosts()
+        })
+        self.present(alert, animated: true, completion: nil)
+    }
     // MARK: - Functions
     
     private func deletePosts() {
         startIndicator()
         postArray = []
+        postCommand.deleteAllPost()
         tableView.reloadData()
         stopIndicator()
     }
     
     private func loadItems(){
+        postArray = postCommand.getAllPosts()
         if(postArray.isEmpty){
             startIndicator()
             fetchPost()
             stopIndicator()
         }
     }
+    
+    
     // MARK: - IBActions
     @IBAction func deleteAll(_ sender: UIButton) {
         showAlertWithDistructiveButton()
@@ -170,6 +185,7 @@ extension MainViewController : SwipeTableViewCellDelegate {
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> [SwipeAction]? {
         guard orientation == .right else { return nil }
         let deleteAction = SwipeAction(style: .destructive, title: NSLocalizedString(Constants.deleteAll_delete, comment: "Text for Delete Single Post")) { action, indexPath in
+            self.postCommand.deletePost(post: self.postArray[indexPath.row])
             self.postArray.remove(at: indexPath.row)
         }
         return [deleteAction]
@@ -195,7 +211,7 @@ class PostCell : SwipeTableViewCell {
         
     }
     
-    func setCell(post : PostDto){
+    func setCell(post : Post){
         titleText.text = post.title
         favoriteImage.isHidden = (post.favorite ?  false : true)
     }

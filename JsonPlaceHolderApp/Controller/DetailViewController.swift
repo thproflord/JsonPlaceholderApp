@@ -15,9 +15,11 @@ class DetailViewController : UIViewController {
     @IBOutlet weak var favoriteButton: UIBarButtonItem!
     
     //MARK: - Properties
-    var post: PostDto? = nil
+    var post: Post? = nil
     var user: UserDto? = nil
     var commentsList :[CommentDto] = []
+    
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
     //MARK: - View Lifecycle
     override func viewDidLoad() {
@@ -31,7 +33,7 @@ class DetailViewController : UIViewController {
     
     //MARK: - Functions
     private func setFavorite(){
-        favoriteButton.image = post!.favorite ? UIImage(systemName: "star.fill") : UIImage(systemName: "star")
+        favoriteButton.image = post!.favorite ? UIImage(systemName: Constants.star_fill) : UIImage(systemName: Constants.star)
         
     }
     
@@ -46,14 +48,16 @@ class DetailViewController : UIViewController {
     
     private func fetchData(){
         if(Reachability.isConnectedToNetwork()){
+            startIndicator()
             let group = DispatchGroup()
             group.enter()
             DispatchQueue.global().async {
-                self.user = DetailViewService.getUserfromPost(userId: self.post!.userId)
-                self.commentsList = DetailViewService.getCommentsList(postId: self.post!.id)
+                self.user = DetailViewService.getUserfromPost(userId: Int(self.post!.userId))
+                self.commentsList = DetailViewService.getCommentsList(postId: Int(self.post!.id))
                 group.leave()
             }
             group.notify(queue: .main){
+                self.stopIndicator()
                 self.tableView.reloadData()
             }
         } else {
@@ -63,8 +67,14 @@ class DetailViewController : UIViewController {
     
     //MARK: - IBActions
     @IBAction func favoriteAction(_ sender: Any) {
-        post!.favorite = !post!.favorite
-        setFavorite()
+        do{
+            post!.favorite = !post!.favorite
+            try context.save()
+            setFavorite()
+        } catch {
+            post!.favorite = !post!.favorite
+            print("error")
+        }
     }
     
 }
@@ -104,7 +114,7 @@ class DescriptionViewCell: UITableViewCell {
         descripTitle.text = NSLocalizedString(Constants.descriptionCell_title, comment: "Description Title")
     }
     
-    func setCell(body post: PostDto){
+    func setCell(body post: Post){
         descriptionBody.text = post.body
     }
 }

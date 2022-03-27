@@ -28,6 +28,7 @@
 		39CDB9E327EF9AF5009326C9 /* UserDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39CDB9E227EF9AF5009326C9 /* UserDto.swift */; };
 		39CDB9E527EF9B02009326C9 /* DetailViewService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39CDB9E427EF9B02009326C9 /* DetailViewService.swift */; };
 		39CDB9E727EFB3FB009326C9 /* CommentDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39CDB9E627EFB3FB009326C9 /* CommentDto.swift */; };
+		39CDB9E927F0E3B7009326C9 /* PostCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39CDB9E827F0E3B7009326C9 /* PostCommand.swift */; };
 		4B7A185EAA9D3DD9B4BA02B2 /* Pods_JsonPlaceHolderApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 434658E6F7CBBF36225C2577 /* Pods_JsonPlaceHolderApp.framework */; };
 		7319CC527750642A94FA52A2 /* Pods_JsonPlaceHolderAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 494AD11360B90BAA9537A1EE /* Pods_JsonPlaceHolderAppTests.framework */; };
 		7EBEB46766FDC3BE78887F0E /* Pods_JsonPlaceHolderApp_JsonPlaceHolderAppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30BD608581445CD162AF74CC /* Pods_JsonPlaceHolderApp_JsonPlaceHolderAppUITests.framework */; };
@@ -80,6 +81,7 @@
 		39CDB9E227EF9AF5009326C9 /* UserDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDto.swift; sourceTree = "<group>"; };
 		39CDB9E427EF9B02009326C9 /* DetailViewService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewService.swift; sourceTree = "<group>"; };
 		39CDB9E627EFB3FB009326C9 /* CommentDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentDto.swift; sourceTree = "<group>"; };
+		39CDB9E827F0E3B7009326C9 /* PostCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCommand.swift; sourceTree = "<group>"; };
 		434658E6F7CBBF36225C2577 /* Pods_JsonPlaceHolderApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JsonPlaceHolderApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		494AD11360B90BAA9537A1EE /* Pods_JsonPlaceHolderAppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JsonPlaceHolderAppTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9B774A37A537E7DA363630E3 /* Pods-JsonPlaceHolderAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JsonPlaceHolderAppTests.debug.xcconfig"; path = "Target Support Files/Pods-JsonPlaceHolderAppTests/Pods-JsonPlaceHolderAppTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -155,7 +157,7 @@
 				39CDB9D827EE3928009326C9 /* DTO */,
 				39CDB9D527EE329D009326C9 /* Utilities */,
 				39CDB9D227EE321D009326C9 /* Services */,
-				39CDB9C827ED47D2009326C9 /* Model */,
+				39CDB9C827ED47D2009326C9 /* Command */,
 				39CDB9C727ED47CE009326C9 /* Controller */,
 				39CDB9C627ED47C4009326C9 /* Views */,
 				39CDB99327ED47AD009326C9 /* AppDelegate.swift */,
@@ -202,11 +204,12 @@
 			path = Controller;
 			sourceTree = "<group>";
 		};
-		39CDB9C827ED47D2009326C9 /* Model */ = {
+		39CDB9C827ED47D2009326C9 /* Command */ = {
 			isa = PBXGroup;
 			children = (
+				39CDB9E827F0E3B7009326C9 /* PostCommand.swift */,
 			);
-			path = Model;
+			path = Command;
 			sourceTree = "<group>";
 		};
 		39CDB9D227EE321D009326C9 /* Services */ = {
@@ -502,6 +505,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				39CDB9E127EE5E2B009326C9 /* SpinnerViewController.swift in Sources */,
+				39CDB9E927F0E3B7009326C9 /* PostCommand.swift in Sources */,
 				39CDB99827ED47AD009326C9 /* MainViewController.swift in Sources */,
 				39CDB9E527EF9B02009326C9 /* DetailViewService.swift in Sources */,
 				39CDB9E327EF9AF5009326C9 /* UserDto.swift in Sources */,
